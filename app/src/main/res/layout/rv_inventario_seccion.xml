@@ -36,7 +36,7 @@
             android:textSize="18dp"
             android:layout_gravity="end"
             android:textColor="@color/colorAccent"
-            tools:text="$$$"/>
+            tools:text="Cant Inv"/>
 
 
 
