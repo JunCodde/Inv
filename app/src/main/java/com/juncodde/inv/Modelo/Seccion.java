@@ -2,16 +2,25 @@ package com.juncodde.inv.Modelo;
 
 public class Seccion {
 
-    private String nombre, precio;
+    private String id, nombre, precio;
     private int foto;
 
-    public Seccion(String nombre, String precio, int foto) {
+    public Seccion(String id, String nombre, String precio, int foto) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.foto = foto;
     }
 
     public Seccion() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
