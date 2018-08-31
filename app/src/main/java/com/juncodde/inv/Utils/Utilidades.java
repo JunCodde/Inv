@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.juncodde.inv.Constantes.ConstantesSeccion;
+import com.juncodde.inv.Modelo.TipoSeccion;
 import com.juncodde.inv.R;
+
+import java.util.ArrayList;
 
 public class Utilidades {
 
@@ -74,6 +77,74 @@ public class Utilidades {
         desde.startActivity(i);
         desde.finish();
 
+    }
+
+    private ArrayList<TipoSeccion> getSubTipos(String id){
+        ArrayList<TipoSeccion> tipos = new ArrayList<>();
+
+        switch (id){
+
+            case ConstantesSeccion.Ropa_ID_Camisa:
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Chaqueta:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Falda:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Media:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Pantalon:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Pijama:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_R_Interior:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Vestido:
+
+
+                break;
+
+            case ConstantesSeccion.Ropa_ID_Zapatos:
+
+
+                break;
+
+            default:
+
+
+                break;
+
+        }
+
+        tipos.add(new TipoSeccion("Camisas", ConstantesSeccion.Ropa_ID_Camisa));
+        tipos.add(new TipoSeccion("Pantalones", ConstantesSeccion.Ropa_ID_Pantalon));
+        tipos.add(new TipoSeccion("Chaquetas", ConstantesSeccion.Ropa_ID_Chaqueta));
+        tipos.add(new TipoSeccion("Faldas", ConstantesSeccion.Ropa_ID_Falda));
+        tipos.add(new TipoSeccion("Medias", ConstantesSeccion.Ropa_ID_Media));
+        tipos.add(new TipoSeccion("Ropa Interior", ConstantesSeccion.Ropa_ID_R_Interior));
+        tipos.add(new TipoSeccion("Vestidos", ConstantesSeccion.Ropa_ID_Vestido));
+        tipos.add(new TipoSeccion("Zapatos", ConstantesSeccion.Ropa_ID_Zapatos));
+
+        return tipos;
     }
 
 }
