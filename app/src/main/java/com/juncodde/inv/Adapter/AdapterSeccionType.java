@@ -36,7 +36,7 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterSeccionTypeHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final AdapterSeccionTypeHolder holder, int position) {
 
         final TipoSeccion tipo = tipos.get(position);
 
@@ -52,12 +52,38 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
                     ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
                 }
 
+                checkEneabled();
+                tipo.setEneabled(false);
+
+
             }
         });
 
+        if(tipo.isEneabled()){
+
+            holder.cv_seccion.setEnabled(true);
+
+        }else{
+
+            holder.cv_seccion.setEnabled(false);
+
+        }
 
 
     }
+
+    private void checkEneabled(){
+
+        for (int i = 0; i < tipos.size(); i++) {
+
+            TipoSeccion tipo = tipos.get(i);
+
+            tipo.setEneabled(true);
+
+        }
+
+    }
+
 
     @Override
     public int getItemCount() {

@@ -186,8 +186,6 @@ public class Utilidades {
                 break;
 
 
-
-
             default:
                 r = R.drawable.camisa;
 

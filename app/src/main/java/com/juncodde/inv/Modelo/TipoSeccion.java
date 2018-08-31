@@ -3,10 +3,19 @@ package com.juncodde.inv.Modelo;
 public class TipoSeccion {
 
     String nombre, id;
+    boolean isEneabled = true;
 
     public TipoSeccion(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
+    }
+
+    public boolean isEneabled() {
+        return isEneabled;
+    }
+
+    public void setEneabled(boolean eneabled) {
+        isEneabled = eneabled;
     }
 
     public TipoSeccion() {
