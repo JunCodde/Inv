@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.juncodde.inv.Adapter.AdapterSeccionTalla;
 import com.juncodde.inv.Adapter.AdapterSeccionType;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
 import com.juncodde.inv.Modelo.TipoSeccion;
@@ -20,7 +21,8 @@ public class AddSeccionActivity extends AppCompatActivity {
     private EditText et_Marca, et_PrecioVenta, et_PrecioCompra, et_CantInventario;
 
     LinearLayoutManager lManager;
-    AdapterSeccionType adapter;
+    AdapterSeccionType adapterType;
+    AdapterSeccionTalla adapterTalla;
 
 
 
@@ -41,20 +43,42 @@ public class AddSeccionActivity extends AppCompatActivity {
         et_PrecioCompra = (EditText) findViewById(R.id.et_PrecioCompra);
         et_CantInventario = (EditText) findViewById(R.id.et_CantInventario);
 
-        ponerRV();
+        ponerRVSeccion();
+        ponerRVTalla();
 
 
     }
 
-    private void ponerRV(){
+    private void ponerRVSeccion(){
 
         lManager = new LinearLayoutManager(this);
         lManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         rv_addSeccionHorizontal.setLayoutManager(lManager);
 
-        adapter = new AdapterSeccionType(getTipos(), this);
-        rv_addSeccionHorizontal.setAdapter(adapter);
+        adapterType = new AdapterSeccionType(getTipos(), this);
+        rv_addSeccionHorizontal.setAdapter(adapterType);
+
+
+    }
+
+    private void ponerRVTalla(){
+
+        ArrayList<String> tallas = new ArrayList<>();
+
+        for (int i = 12; i < 54; i++) {
+            tallas.add((String.valueOf(i)));
+            i++;
+
+        }
+
+        lManager = new LinearLayoutManager(this);
+        lManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        rv_addTallaHorizontal.setLayoutManager(lManager);
+
+        adapterTalla = new AdapterSeccionTalla(tallas, this);
+        rv_addTallaHorizontal.setAdapter(adapterTalla);
 
 
     }
