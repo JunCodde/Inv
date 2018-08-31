@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.juncodde.inv.Adapter.AdapterInvSeccion;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
 import com.juncodde.inv.Modelo.Seccion;
+import com.juncodde.inv.Utils.Utilidades;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,8 @@ public class InventarioActivity extends AppCompatActivity {
         btn_NuevaSeccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Utilidades.makeIntent(InventarioActivity.this, AddSeccionActivity.class);
 
             }
         });

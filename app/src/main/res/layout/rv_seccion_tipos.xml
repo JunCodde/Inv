@@ -17,15 +17,18 @@
             android:id="@+id/img_seccionTipo"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@drawable/camisa"/>
+            android:src="@drawable/camisa"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/tv_seccionTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:text="Camisa"
             android:textSize="20dp"
+            android:maxWidth="120dp"
             />
 
     </LinearLayout>
