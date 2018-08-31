@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -11,18 +12,22 @@ import com.juncodde.inv.Adapter.AdapterSeccionTalla;
 import com.juncodde.inv.Adapter.AdapterSeccionType;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
 import com.juncodde.inv.Modelo.TipoSeccion;
+import com.juncodde.inv.Utils.Utilidades;
 
 import java.util.ArrayList;
 
 public class AddSeccionActivity extends AppCompatActivity {
 
-    private RecyclerView rv_addSeccionHorizontal, rv_addTallaHorizontal;
+    private RecyclerView rv_addSeccionHorizontal, rv_addTallaHorizontal, rv_addSubTipoHorizontal;
     private ImageButton imgBtn_SeccionHombre, imgBtn_SeccionMujer;
     private EditText et_Marca, et_PrecioVenta, et_PrecioCompra, et_CantInventario;
 
     LinearLayoutManager lManager;
     AdapterSeccionType adapterType;
     AdapterSeccionTalla adapterTalla;
+
+    public String genero = "h";
+    String idSelected = "";
 
 
 
@@ -34,6 +39,7 @@ public class AddSeccionActivity extends AppCompatActivity {
 
         rv_addSeccionHorizontal = (RecyclerView) findViewById(R.id.rv_addSeccionHorizontal);
         rv_addTallaHorizontal = (RecyclerView) findViewById(R.id.rv_addTallaHorizontal);
+        rv_addSubTipoHorizontal = (RecyclerView) findViewById(R.id.rv_addSubTipoHorizontal);
 
         imgBtn_SeccionHombre = (ImageButton) findViewById(R.id.imgBtn_SeccionHombre);
         imgBtn_SeccionMujer = (ImageButton) findViewById(R.id.imgBtn_SeccionMujer);
@@ -45,6 +51,26 @@ public class AddSeccionActivity extends AppCompatActivity {
 
         ponerRVSeccion();
         ponerRVTalla();
+        ponerRVSubSeccion(idSelected);
+        checkGenero();
+
+        imgBtn_SeccionMujer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                genero = "m";
+                checkGenero();
+                ponerRVSubSeccion(idSelected);
+            }
+        });
+
+        imgBtn_SeccionHombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                genero = "h";
+                checkGenero();
+                ponerRVSubSeccion(idSelected);
+            }
+        });
 
 
     }
@@ -60,6 +86,78 @@ public class AddSeccionActivity extends AppCompatActivity {
         rv_addSeccionHorizontal.setAdapter(adapterType);
 
 
+    }
+
+    public void ponerRVSubSeccion(String id){
+
+        idSelected = id;
+
+        ArrayList<TipoSeccion> listaGenero = new ArrayList<>();
+        ArrayList<TipoSeccion> lista = Utilidades.getSubTipos(id);
+
+        if(checkGenero().equals("h")){
+
+            for (int i = 0; i < lista.size(); i++) {
+
+                TipoSeccion tipoCurrent = lista.get(i);
+
+                if(tipoCurrent.getId().contains("_h")){
+                    listaGenero.add(tipoCurrent);
+
+                }
+
+            }
+
+        }else if(checkGenero().equals("m")){
+
+            for (int i = 0; i < lista.size(); i++) {
+
+                TipoSeccion tipoCurrent = lista.get(i);
+
+                if(tipoCurrent.getId().contains("_m")){
+                    listaGenero.add(tipoCurrent);
+
+                }
+
+            }
+
+        }
+
+        lManager = new LinearLayoutManager(this);
+        lManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        rv_addSubTipoHorizontal.setLayoutManager(lManager);
+
+        adapterType = new AdapterSeccionType(listaGenero, this);
+        rv_addSubTipoHorizontal.setAdapter(adapterType);
+
+
+    }
+
+    public String checkGenero(){
+
+        if(genero.equals("h")){
+
+            imgBtn_SeccionHombre.setEnabled(false);
+            imgBtn_SeccionMujer.setEnabled(true);
+
+        }else if(genero.equals("m")){
+
+            imgBtn_SeccionHombre.setEnabled(true);
+            imgBtn_SeccionMujer.setEnabled(false);
+
+        }
+
+        return genero;
+
+    }
+
+    public void setGenero(String genero){
+        this.genero = genero;
+    }
+
+    public String getGenero(){
+        return this.genero;
     }
 
     private void ponerRVTalla(){

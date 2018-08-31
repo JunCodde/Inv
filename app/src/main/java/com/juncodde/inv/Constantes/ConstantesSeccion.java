@@ -46,10 +46,10 @@ public class ConstantesSeccion {
     public static final String Ropa_ID_Ropa_ID_Vestido_SubTipo_corto_m = "vestido_c_m";
     public static final String Ropa_ID_Ropa_ID_Vestido_SubTipo_largo_m = "vestido_l_m";
 
-    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_m = "deportivo_m";
-    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_h = "deportivo_h";
-    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_h = "vestir_h";
-    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_m = "vestir_m";
+    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_m = "z_deportivo_m";
+    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_h = "z_deportivo_h";
+    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_h = "z_vestir_h";
+    public static final String Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_m = "z_vestir_m";
 
 
 

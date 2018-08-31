@@ -2,6 +2,7 @@ package com.juncodde.inv.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.juncodde.inv.AddSeccionActivity;
 import com.juncodde.inv.Modelo.TipoSeccion;
 import com.juncodde.inv.R;
 import com.juncodde.inv.Utils.Utilidades;
@@ -36,11 +38,24 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
     @Override
     public void onBindViewHolder(@NonNull AdapterSeccionTypeHolder holder, int position) {
 
-        TipoSeccion tipo = tipos.get(position);
+        final TipoSeccion tipo = tipos.get(position);
 
         holder.tv_seccionTipo.setText(tipo.getNombre());
 
         holder.img_seccionTipo.setImageDrawable(activity.getResources().getDrawable(Utilidades.getImagen(tipo.getId())));
+
+        holder.cv_seccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(activity instanceof AddSeccionActivity){
+                    ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
+                }
+
+            }
+        });
+
+
 
     }
 
@@ -53,12 +68,14 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
 
         private ImageView img_seccionTipo;
         private TextView tv_seccionTipo;
+        private CardView cv_seccion;
 
         public AdapterSeccionTypeHolder(View itemView) {
             super(itemView);
 
             img_seccionTipo = (ImageView) itemView.findViewById(R.id.img_seccionTipo);
             tv_seccionTipo = (TextView) itemView.findViewById(R.id.tv_seccionTipo);
+            cv_seccion = (CardView) itemView.findViewById(R.id.cv_seccion);
         }
     }
 }
