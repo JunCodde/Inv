@@ -15,7 +15,7 @@
         android:background="@color/colorAccent"
         android:textColor="#FFF"
         android:textSize="22sp"
-        android:text="Agregar Seccion"
+        android:text="quitar Seccion"
         />
 
     <android.support.v7.widget.RecyclerView
