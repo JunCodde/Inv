@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.juncodde.inv.Adapter.AdapterSeccionTalla;
 import com.juncodde.inv.Adapter.AdapterSeccionType;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
+import com.juncodde.inv.Modelo.Talla;
 import com.juncodde.inv.Modelo.TipoSeccion;
 import com.juncodde.inv.Utils.Utilidades;
 
@@ -18,9 +22,11 @@ import java.util.ArrayList;
 
 public class AddSeccionActivity extends AppCompatActivity {
 
+    private static final String TAG = "AddSeccionActivity";
     private RecyclerView rv_addSeccionHorizontal, rv_addTallaHorizontal, rv_addSubTipoHorizontal;
     private ImageButton imgBtn_SeccionHombre, imgBtn_SeccionMujer;
     private EditText et_Marca, et_PrecioVenta, et_PrecioCompra, et_CantInventario;
+    private Button btn_GuardarSeccion;
 
     LinearLayoutManager lManager;
     AdapterSeccionType adapterType;
@@ -28,6 +34,10 @@ public class AddSeccionActivity extends AppCompatActivity {
 
     public String genero = "h";
     String idSelected = "";
+
+    public String idTipoSelected = "";
+    public String idSubTipoSelected = "";
+    public String idTallaSelected = "";
 
 
 
@@ -48,6 +58,8 @@ public class AddSeccionActivity extends AppCompatActivity {
         et_PrecioVenta = (EditText) findViewById(R.id.et_PrecioVenta);
         et_PrecioCompra = (EditText) findViewById(R.id.et_PrecioCompra);
         et_CantInventario = (EditText) findViewById(R.id.et_CantInventario);
+
+        btn_GuardarSeccion = (Button) findViewById(R.id.btn_GuardarSeccion);
 
         ponerRVSeccion();
         ponerRVTalla();
@@ -71,6 +83,26 @@ public class AddSeccionActivity extends AppCompatActivity {
                 ponerRVSubSeccion(idSelected);
             }
         });
+
+        btn_GuardarSeccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(idTipoSelected.isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Seleccione el tipo de ropa", Toast.LENGTH_SHORT).show();
+                }else if(idSubTipoSelected.isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Seleccione el tipo de " + idTipoSelected, Toast.LENGTH_SHORT).show();
+                }else if(idTallaSelected.isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Seleccione la talla", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.d(TAG, "Tipo: " + idTipoSelected);
+                    Log.d(TAG, "SubTipo: " + idSubTipoSelected);
+                    Log.d(TAG, "Talla: " + idTallaSelected);
+                }
+
+            }
+        });
+
 
 
     }
@@ -161,10 +193,10 @@ public class AddSeccionActivity extends AppCompatActivity {
 
     private void ponerRVTalla(){
 
-        ArrayList<String> tallas = new ArrayList<>();
+        ArrayList<Talla> tallas = new ArrayList<>();
 
         for (int i = 12; i < 44; i++) {
-            tallas.add((String.valueOf(i)));
+            tallas.add(new Talla(String.valueOf(i)));
             i++;
 
         }

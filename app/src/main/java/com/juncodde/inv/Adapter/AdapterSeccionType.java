@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.AdapterSeccionTypeHolder> {
 
+    private static final String TAG = "AdapterSeccionType";
     private ArrayList<TipoSeccion> tipos;
     private Activity activity;
 
@@ -48,33 +49,40 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
             @Override
             public void onClick(View view) {
 
+                if(tipo.isEneabled()){
 
-                if(tipo.isSub()){
+                    if(tipo.isSub()){
 
-                    if(activity instanceof AddSeccionActivity){
-                        ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
+                        if(activity instanceof AddSeccionActivity){
+                            ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
+
+                            ((AddSeccionActivity)activity).idTipoSelected = tipo.getId();
+                        }
+
+                        checkEneabled();
+                        tipo.setEneabled(false);
+                        holder.cv_seccion.setCardBackgroundColor(activity.getResources().getColor(R.color.cardview_shadow_start_color));
+
+                    }else {
+
+                        if(activity instanceof AddSeccionActivity){
+                            ((AddSeccionActivity)activity).idSubTipoSelected = tipo.getId();
+                        }
+
+                        checkEneabled();
+                        tipo.setEneabled(false);
+                        holder.cv_seccion.setCardBackgroundColor(activity.getResources().getColor(R.color.cardview_shadow_start_color));
+
                     }
 
-                    checkEneabled();
-                    tipo.setEneabled(false);
-
-                }else {
-
-                    Utilidades.makToast(activity, tipo.getNombre());
-
                 }
-
 
             }
         });
 
         if(tipo.isEneabled()){
 
-            holder.cv_seccion.setEnabled(true);
-
-        }else{
-
-            holder.cv_seccion.setEnabled(false);
+            holder.cv_seccion.setCardBackgroundColor(activity.getResources().getColor(R.color.cardview_light_background));
 
         }
 
@@ -90,7 +98,7 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
             tipo.setEneabled(true);
 
         }
-
+        notifyDataSetChanged();
     }
 
 
