@@ -304,4 +304,15 @@ public class Utilidades {
         return tipos;
     }
 
+    public static int generarID(){
+        int matricula = 0;
+
+        for (int i = 0; i < 16; i++) {
+            matricula=(int) (Math.random()*9999+1);
+            System.out.print(matricula+"  ");
+        }
+
+        return matricula;
+    }
+
 }

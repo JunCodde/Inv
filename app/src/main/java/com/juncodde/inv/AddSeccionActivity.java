@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 import com.juncodde.inv.Adapter.AdapterSeccionTalla;
 import com.juncodde.inv.Adapter.AdapterSeccionType;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
+import com.juncodde.inv.Modelo.Prenda;
 import com.juncodde.inv.Modelo.Talla;
 import com.juncodde.inv.Modelo.TipoSeccion;
 import com.juncodde.inv.Utils.Utilidades;
@@ -94,10 +94,21 @@ public class AddSeccionActivity extends AppCompatActivity {
                     Toast.makeText(AddSeccionActivity.this, "Seleccione el tipo de " + idTipoSelected, Toast.LENGTH_SHORT).show();
                 }else if(idTallaSelected.isEmpty()){
                     Toast.makeText(AddSeccionActivity.this, "Seleccione la talla", Toast.LENGTH_SHORT).show();
+                }else if(et_Marca.getText().toString().isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Ingrese su marca", Toast.LENGTH_SHORT).show();
+                }else if(et_PrecioVenta.getText().toString().isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Ingrese el precio de venta", Toast.LENGTH_SHORT).show();
+                }else if(et_PrecioCompra.getText().toString().isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Ingrese el precio de compra", Toast.LENGTH_SHORT).show();
+                }else if(et_CantInventario.getText().toString().isEmpty()){
+                    Toast.makeText(AddSeccionActivity.this, "Ingrese la cantidad en el Inventario", Toast.LENGTH_SHORT).show();
                 }else{
-                    Log.d(TAG, "Tipo: " + idTipoSelected);
-                    Log.d(TAG, "SubTipo: " + idSubTipoSelected);
-                    Log.d(TAG, "Talla: " + idTallaSelected);
+
+                    Prenda p = new Prenda(idTipoSelected, idSubTipoSelected, genero, et_Marca.getText().toString(), "Lol id largo 16 digitos",  Integer.valueOf(et_PrecioVenta.getText().toString()),
+                            Integer.valueOf(et_PrecioCompra.getText().toString()),Integer.valueOf(idTallaSelected));
+
+                    //esa prenda es un objeto listo para guardar en Base de datos // TODO
+
                 }
 
             }
@@ -106,6 +117,8 @@ public class AddSeccionActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private void ponerRVSeccion(){
 
