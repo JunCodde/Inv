@@ -48,12 +48,21 @@ public class AdapterSeccionType extends RecyclerView.Adapter<AdapterSeccionType.
             @Override
             public void onClick(View view) {
 
-                if(activity instanceof AddSeccionActivity){
-                    ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
-                }
 
-                checkEneabled();
-                tipo.setEneabled(false);
+                if(tipo.isSub()){
+
+                    if(activity instanceof AddSeccionActivity){
+                        ((AddSeccionActivity)activity).ponerRVSubSeccion(tipo.getId());
+                    }
+
+                    checkEneabled();
+                    tipo.setEneabled(false);
+
+                }else {
+
+                    Utilidades.makToast(activity, tipo.getNombre());
+
+                }
 
 
             }

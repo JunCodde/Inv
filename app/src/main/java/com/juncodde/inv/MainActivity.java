@@ -1,10 +1,11 @@
 package com.juncodde.inv;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+
+import com.juncodde.inv.Utils.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(MainActivity.this, InventarioActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(i);
-                finish();
+                Utilidades.makeIntent(MainActivity.this, InventarioActivity.class);
 
             }
         });

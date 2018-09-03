@@ -2,6 +2,7 @@ package com.juncodde.inv.Utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.juncodde.inv.Constantes.ConstantesSeccion;
 import com.juncodde.inv.Modelo.TipoSeccion;
@@ -74,6 +75,8 @@ public class Utilidades {
                 r = R.drawable.c_vestir;
 
                 break;
+
+
 
             case ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_deportiva_h:
                 r = R.drawable.c_deportivas;
@@ -205,6 +208,12 @@ public class Utilidades {
 
     }
 
+    public static void makToast(Activity ctx,String mensaje){
+
+        Toast.makeText(ctx, mensaje, Toast.LENGTH_SHORT).show();
+
+    }
+
     public static ArrayList<TipoSeccion> getSubTipos(String id){
         ArrayList<TipoSeccion> tipos = new ArrayList<>();
 
@@ -212,79 +221,79 @@ public class Utilidades {
 
             case ConstantesSeccion.Ropa_ID_Camisa:
 
-                tipos.add(new TipoSeccion("Chemise", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_chemise_h));
-                tipos.add(new TipoSeccion("Blusa", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_tirantes_m));
-                tipos.add(new TipoSeccion("de Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_vestir_h));
-                tipos.add(new TipoSeccion("de Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_vestir_m));
-                tipos.add(new TipoSeccion("Deportiva", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_deportiva_h));
+                tipos.add(new TipoSeccion("Chemise", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_chemise_h, false));
+                tipos.add(new TipoSeccion("Blusa", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_tirantes_m, false));
+                tipos.add(new TipoSeccion("de Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_vestir_h, false));
+                tipos.add(new TipoSeccion("de Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_vestir_m, false));
+                tipos.add(new TipoSeccion("Deportiva", ConstantesSeccion.Ropa_ID_Ropa_ID_Camisa_SubTipo_deportiva_h, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Chaqueta:
 
-                tipos.add(new TipoSeccion("Sudadera", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_sueter_m));
-                tipos.add(new TipoSeccion("Sudadera", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_sueter_h));
-                tipos.add(new TipoSeccion("con Capucha", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_chaqueta_m));
+                tipos.add(new TipoSeccion("Sudadera", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_sueter_m, false));
+                tipos.add(new TipoSeccion("Sudadera", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_sueter_h, false));
+                tipos.add(new TipoSeccion("con Capucha", ConstantesSeccion.Ropa_ID_Ropa_ID_Sueter_SubTipo_chaqueta_m, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Falda:
 
-                tipos.add(new TipoSeccion("Corta", ConstantesSeccion.Ropa_ID_Ropa_ID_Falda_SubTipo_corta_m));
-                tipos.add(new TipoSeccion("Larga", ConstantesSeccion.Ropa_ID_Ropa_ID_Falda_SubTipo_larga_m));
+                tipos.add(new TipoSeccion("Corta", ConstantesSeccion.Ropa_ID_Ropa_ID_Falda_SubTipo_corta_m, false));
+                tipos.add(new TipoSeccion("Larga", ConstantesSeccion.Ropa_ID_Ropa_ID_Falda_SubTipo_larga_m, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Media:
 
-                tipos.add(new TipoSeccion("Largas", ConstantesSeccion.Ropa_ID_Ropa_ID_Medias_SubTipo_m));
-                tipos.add(new TipoSeccion("Largas", ConstantesSeccion.Ropa_ID_Ropa_ID_Medias_SubTipo_h));
+                tipos.add(new TipoSeccion("Largas", ConstantesSeccion.Ropa_ID_Ropa_ID_Medias_SubTipo_m, false));
+                tipos.add(new TipoSeccion("Largas", ConstantesSeccion.Ropa_ID_Ropa_ID_Medias_SubTipo_h, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Pantalon:
 
-                tipos.add(new TipoSeccion("Jean", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_jean_m));
-                tipos.add(new TipoSeccion("Jean", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_jean_h));
-                tipos.add(new TipoSeccion("Short", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_short_m));
-                tipos.add(new TipoSeccion("Short", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_short_h));
+                tipos.add(new TipoSeccion("Jean", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_jean_m, false));
+                tipos.add(new TipoSeccion("Jean", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_jean_h, false));
+                tipos.add(new TipoSeccion("Short", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_short_m, false));
+                tipos.add(new TipoSeccion("Short", ConstantesSeccion.Ropa_ID_Ropa_ID_Pantalon_SubTipo_short_h, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Pijama:
 
-                tipos.add(new TipoSeccion("Conjunto", ConstantesSeccion.Ropa_ID_Ropa_ID_Pijama_SubTipo_h));
-                tipos.add(new TipoSeccion("Conjunto", ConstantesSeccion.Ropa_ID_Ropa_ID_Pijama_SubTipo_m));
+                tipos.add(new TipoSeccion("Conjunto", ConstantesSeccion.Ropa_ID_Ropa_ID_Pijama_SubTipo_h, false));
+                tipos.add(new TipoSeccion("Conjunto", ConstantesSeccion.Ropa_ID_Ropa_ID_Pijama_SubTipo_m, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_R_Interior:
 
-                tipos.add(new TipoSeccion("Boxer", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_h));
-                tipos.add(new TipoSeccion("Panties", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_m));
-                tipos.add(new TipoSeccion("Sosten", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_Sosten_m));
+                tipos.add(new TipoSeccion("Boxer", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_h, false));
+                tipos.add(new TipoSeccion("Panties", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_m, false));
+                tipos.add(new TipoSeccion("Sosten", ConstantesSeccion.Ropa_ID_Ropa_ID_R_Interior_SubTipo_Sosten_m, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Vestido:
 
-                tipos.add(new TipoSeccion("Corto", ConstantesSeccion.Ropa_ID_Ropa_ID_Vestido_SubTipo_corto_m));
-                tipos.add(new TipoSeccion("Largo", ConstantesSeccion.Ropa_ID_Ropa_ID_Vestido_SubTipo_largo_m));
+                tipos.add(new TipoSeccion("Corto", ConstantesSeccion.Ropa_ID_Ropa_ID_Vestido_SubTipo_corto_m, false));
+                tipos.add(new TipoSeccion("Largo", ConstantesSeccion.Ropa_ID_Ropa_ID_Vestido_SubTipo_largo_m, false));
 
                 break;
 
             case ConstantesSeccion.Ropa_ID_Zapatos:
 
-                tipos.add(new TipoSeccion("Deportivos", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_m));
-                tipos.add(new TipoSeccion("Deportivos", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_h));
-                tipos.add(new TipoSeccion("Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_h));
-                tipos.add(new TipoSeccion("Tacones", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_m));
+                tipos.add(new TipoSeccion("Deportivos", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_m, false));
+                tipos.add(new TipoSeccion("Deportivos", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_deportivo_h, false));
+                tipos.add(new TipoSeccion("Vestir", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_h, false));
+                tipos.add(new TipoSeccion("Tacones", ConstantesSeccion.Ropa_ID_Ropa_ID_Zapatos_SubTipo_vestir_m, false));
 
                 break;
 
             default:
 
-                tipos.add(new TipoSeccion("Nada para mostrar", ConstantesSeccion.Ropa_ID_Camisa));
+                tipos.add(new TipoSeccion("Nada para mostrar", ConstantesSeccion.Ropa_ID_Camisa, false));
 
                 break;
 

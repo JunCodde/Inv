@@ -104,6 +104,9 @@ public class AddSeccionActivity extends AppCompatActivity {
                 if(tipoCurrent.getId().contains("_h")){
                     listaGenero.add(tipoCurrent);
 
+                }else if(tipoCurrent.getId().contains("_m")){
+                }else {
+                    listaGenero = lista;
                 }
 
             }
@@ -117,6 +120,9 @@ public class AddSeccionActivity extends AppCompatActivity {
                 if(tipoCurrent.getId().contains("_m")){
                     listaGenero.add(tipoCurrent);
 
+                }else if(tipoCurrent.getId().contains("_h")){
+                }else {
+                    listaGenero = lista;
                 }
 
             }
@@ -152,19 +158,12 @@ public class AddSeccionActivity extends AppCompatActivity {
 
     }
 
-    public void setGenero(String genero){
-        this.genero = genero;
-    }
-
-    public String getGenero(){
-        return this.genero;
-    }
 
     private void ponerRVTalla(){
 
         ArrayList<String> tallas = new ArrayList<>();
 
-        for (int i = 12; i < 54; i++) {
+        for (int i = 12; i < 44; i++) {
             tallas.add((String.valueOf(i)));
             i++;
 

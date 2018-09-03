@@ -32,7 +32,7 @@ public class InventarioActivity extends AppCompatActivity {
         rv_Inventario_Secciones = (RecyclerView) findViewById(R.id.rv_Inventario_Secciones);
         btn_NuevaSeccion = (Button) findViewById(R.id.btn_NuevaSeccion);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
 
             Seccion s = new Seccion(ConstantesSeccion.Ropa_ID_Camisa , "Nombres " + i, "200", i); // Reemplazar entrada de tados con DataBase(Firebase) TODO
             seccions.add(s);
