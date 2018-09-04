@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.juncodde.inv.Adapter.AdapterSeccionTalla;
 import com.juncodde.inv.Adapter.AdapterSeccionType;
+import com.juncodde.inv.BaseDatos.BaseDatos;
 import com.juncodde.inv.Constantes.ConstantesSeccion;
 import com.juncodde.inv.Modelo.Prenda;
 import com.juncodde.inv.Modelo.Talla;
@@ -102,12 +103,22 @@ public class AddSeccionActivity extends AppCompatActivity {
                     Toast.makeText(AddSeccionActivity.this, "Ingrese el precio de compra", Toast.LENGTH_SHORT).show();
                 }else if(et_CantInventario.getText().toString().isEmpty()){
                     Toast.makeText(AddSeccionActivity.this, "Ingrese la cantidad en el Inventario", Toast.LENGTH_SHORT).show();
+                }else if(!isNumber(et_CantInventario.getText().toString())){
+                    Toast.makeText(AddSeccionActivity.this, "Cantidad de inventario debe ser en numeros", Toast.LENGTH_SHORT).show();
+                } else if(!isNumber(et_PrecioVenta.getText().toString())){
+                    Toast.makeText(AddSeccionActivity.this, "Precio de venta debe ser en numeros", Toast.LENGTH_SHORT).show();
+                }else if(!isNumber(et_PrecioCompra.getText().toString())){
+                    Toast.makeText(AddSeccionActivity.this, "Precio de campra debe ser en numeros", Toast.LENGTH_SHORT).show();
                 }else{
 
-                    Prenda p = new Prenda(idTipoSelected, idSubTipoSelected, genero, et_Marca.getText().toString(), "Lol id largo 16 digitos",  Integer.valueOf(et_PrecioVenta.getText().toString()),
-                            Integer.valueOf(et_PrecioCompra.getText().toString()),Integer.valueOf(idTallaSelected));
+                    Prenda p = new Prenda(idTipoSelected, idSubTipoSelected, genero, et_Marca.getText().toString(), Utilidades.generarID(),  Integer.valueOf(et_PrecioVenta.getText().toString()),
+                            Integer.valueOf(et_PrecioCompra.getText().toString()),Integer.valueOf(idTallaSelected), Integer.valueOf(et_CantInventario.getText().toString()));
 
                     //esa prenda es un objeto listo para guardar en Base de datos // TODO
+
+
+
+
 
                 }
 
@@ -118,6 +129,15 @@ public class AddSeccionActivity extends AppCompatActivity {
 
     }
 
+    private boolean isNumber(String num){
+        try {
+            double d = Double.parseDouble(num);
+        }
+        catch(NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
 
     private void ponerRVSeccion(){

@@ -5,10 +5,10 @@ import android.text.format.Time;
 public class Prenda {
 
     String tipo, subTipo, genero, marca, time = getTime(), id;
-    float prcVenta, prcCompra, talla;
+    float prcVenta, prcCompra, talla, cantInv;
 
 
-    public Prenda(String tipo, String subTipo, String genero, String marca, String id, float prcVenta, float prcCompra, float talla) {
+    public Prenda(String tipo, String subTipo, String genero, String marca, String id, float prcVenta, float prcCompra, float talla, float cantInv) {
         this.tipo = tipo;
         this.subTipo = subTipo;
         this.genero = genero;
@@ -17,9 +17,18 @@ public class Prenda {
         this.prcVenta = prcVenta;
         this.prcCompra = prcCompra;
         this.talla = talla;
+        this.cantInv = cantInv;
     }
 
     public Prenda() {
+    }
+
+    public float getCantInv() {
+        return cantInv;
+    }
+
+    public void setCantInv(float cantInv) {
+        this.cantInv = cantInv;
     }
 
     public String getTipo() {
